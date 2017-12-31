@@ -1,0 +1,30 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+ db:
+  image: mysql
+  environment:
+   MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+   MYSQL_USER: uo_sports
+   MYSQL_PASSWORD: uo_sports
+   MYSQL_DATABASE: uo_sports
+  restart: unless-stopped
+  ports:
+   - 3306:3306
+  volumes:
+   - ./database:/var/lib/mysql
+      
+ ws:
+  build: webservice
+  depends_on:
+   - db
+  restart: unless-stopped
+  ports:
+   - 8080:8080
+  environment:
+   SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/uo_sports?useSSL=false
+   SPRING_DATASOURCE_PASSWORD: uo_sports
+   SPRING_DATASOURCE_USERNAME: uo_sports
+
