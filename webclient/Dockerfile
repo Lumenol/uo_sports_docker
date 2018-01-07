@@ -6,7 +6,7 @@ RUN apk add --no-cache git python make g++\
 	
 WORKDIR /uo_sports/webclient
 
-CMD git pull && npm update && ionic serve
+CMD git checkout && git pull && sed -i "s/localhost:8080/$WEBSERVICE/" src/common/urls.ts && npm update && ionic serve
 
 
 	

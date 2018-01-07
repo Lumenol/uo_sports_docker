@@ -1,0 +1,4 @@
+IP=${1:-localhost}
+
+export WEBSERVICE=$IP:8080
+docker-compose up

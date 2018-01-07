@@ -33,5 +33,7 @@ services:
   depends_on:
    - ws
   restart: unless-stopped
+  environment:
+   WEBSERVICE: $WEBSERVICE
   ports:
    - 8100:8100
