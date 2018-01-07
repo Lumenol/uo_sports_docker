@@ -28,3 +28,10 @@ services:
    SPRING_DATASOURCE_PASSWORD: uo_sports
    SPRING_DATASOURCE_USERNAME: uo_sports
 
+ wc:
+  build: webclient
+  depends_on:
+   - ws
+  restart: unless-stopped
+  ports:
+   - 8100:8100
