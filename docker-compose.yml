@@ -37,3 +37,13 @@ services:
    WEBSERVICE: ${WEBSERVICE:-localhost:8080}
   ports:
    - 8100:8100
+   
+ wg:
+  build: webgestion
+  depends_on:
+   - ws
+  restart: unless-stopped
+  environment:
+   WEBSERVICE: ${WEBSERVICE:-localhost:8080}
+  ports:
+   - 8200:8100
