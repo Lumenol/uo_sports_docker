@@ -557,14 +557,14 @@ INSERT INTO `sport` (`nom`, `id`) VALUES
 --
 ALTER TABLE `appartient`
   ADD CONSTRAINT `FK_appartient_id_categorie_sport` FOREIGN KEY (`id_categorie_sport`) REFERENCES `categorie_sport` (`id`),
-  ADD CONSTRAINT `FK_appartient_id_sport` FOREIGN KEY (`id_sport`) REFERENCES `sport` (`id`);
+  ADD CONSTRAINT `FK_appartient_id_sport` FOREIGN KEY (`id_sport`) REFERENCES `sport` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `concerne`
 --
 ALTER TABLE `concerne`
   ADD CONSTRAINT `FK_concerne_id_sport` FOREIGN KEY (`id_sport`) REFERENCES `sport` (`id`),
-  ADD CONSTRAINT `FK_concerne_id_actualite` FOREIGN KEY (`id_actualite`) REFERENCES `actualite` (`id`);
+  ADD CONSTRAINT `FK_concerne_id_actualite` FOREIGN KEY (`id_actualite`) REFERENCES `actualite` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `creneau`
@@ -580,14 +580,14 @@ ALTER TABLE `creneau`
 --
 ALTER TABLE `demande`
   ADD CONSTRAINT `FK_demande_id_piece_inscription` FOREIGN KEY (`id_piece_inscription`) REFERENCES `piece_inscription` (`id`),
-  ADD CONSTRAINT `FK_demande_id_categorie_personne` FOREIGN KEY (`id_categorie_personne`) REFERENCES `categorie_personne` (`id`);
+  ADD CONSTRAINT `FK_demande_id_categorie_personne` FOREIGN KEY (`id_categorie_personne`) REFERENCES `categorie_personne` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `de_type`
 --
 ALTER TABLE `de_type`
   ADD CONSTRAINT `FK_de_type_id_sport` FOREIGN KEY (`id_sport`) REFERENCES `sport` (`id`),
-  ADD CONSTRAINT `FK_de_type_id_activite` FOREIGN KEY (`id_activite`) REFERENCES `activite` (`id`);
+  ADD CONSTRAINT `FK_de_type_id_activite` FOREIGN KEY (`id_activite`) REFERENCES `activite` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `inscription`
